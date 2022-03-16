@@ -25,8 +25,21 @@ class Character{
 }
 
 function mortalKombat(player1, player2) {
-    for (tour = 0; tour == player1.isAlive === false || player2.isAlive === false; tour++) {
-        console.log(`Tour ${tour} :`)
+    // for (let tour = 0; tour < 50; tour ++) {
+    //     console.log(`Tour ${tour} :`)
+    //     if (this.tired === true) {
+    //         console.log(`${this.name} ne peut plus attaquer !`)
+    //         return
+    //     } else if (tour % 2 === 1) {
+    //         player1.attack(player2)
+    //     } else {
+    //         player2.attack(player1)
+    //     }
+    // }
+    let tour = 0;
+
+    do {
+        tour ++
         if (this.tired === true) {
             console.log(`${this.name} ne peut plus attaquer !`)
             return
@@ -35,14 +48,19 @@ function mortalKombat(player1, player2) {
         } else {
             player2.attack(player1)
         }
-    }
-    if (player1.health < 1 || player2.health < 1) {
-        if (player1.isAlive === true && player2.isAlive === false) {
-            console.log(`${player1.name} a gagné !`)
-        } else if (player2.isAlive === true && player1.isAlive === false) {
-            console.log(`${player2.name} a gagné !`)
+
+        if (player1.health < 1 || player2.health < 1) {
+            if (player1.isAlive === true && player2.isAlive === false) {
+                console.log(`${player1.name} a gagné !`); 
+                break;           
+            } else if (player2.isAlive === true && player1.isAlive === false) {
+                console.log(`${player2.name} a gagné !`)
+                break;
+            }
         }
-    }
+      } while (player1.health > 1 || player2.health > 1)
+
+    
 }
     
 
